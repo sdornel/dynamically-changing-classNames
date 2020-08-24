@@ -6,7 +6,12 @@ class App extends React.Component {
     super()
     this.state = {
       clicked: false,
-      activeStars: 0
+      activeStars: 0,
+      active1: '',
+      active2: '',
+      active3: '',
+      active4: '',
+      active5: ''
     }
   }
 
@@ -15,6 +20,20 @@ class App extends React.Component {
       activeStars: parseInt(event.target.id),
       clicked: true
     })
+    // const id = parseInt(event.target.id)
+    // for(let i = 0; i < id; i++){
+    //   this.setState({
+    //     // active${id}: active
+    //   })
+
+    // }
+  }
+
+  renderStars = () => {
+    const stars = ["1","2","3","4","5"];
+    let i = 0
+      return stars.map( (star, index) => 
+      <span className={this.state.activeStars >= index + 1 ? "active" : '' } onClick={this.click}>*</span>)
   }
 
   render(){
@@ -22,15 +41,16 @@ class App extends React.Component {
         <div className="stars-div">
           {this.state.clicked === false ?
           <div>
-            <span id="1" onClick={(event) => this.click(event)}>*</span>
-            <span id="2" onClick={(event) => this.click(event)}>*</span>
-            <span id="3" onClick={(event) => this.click(event)}>*</span>
-            <span id="4" onClick={(event) => this.click(event)}>*</span>
-            <span id="5" onClick={(event) => this.click(event)}>*</span>
+            <span onClick={(event) => this.click(event)}>*</span>
+            <span onClick={(event) => this.click(event)}>*</span>
+            <span onClick={(event) => this.click(event)}>*</span>
+            <span onClick={(event) => this.click(event)}>*</span>
+            <span onClick={(event) => this.click(event)}>*</span>
           </div>
           :
-          null
+          this.renderStars()
           }
+          {/* {this.renderStars()} */}
         </div>
       // :
       // null
