@@ -20,18 +20,10 @@ class App extends React.Component {
       activeStars: parseInt(event.target.id),
       clicked: true
     })
-    // const id = parseInt(event.target.id)
-    // for(let i = 0; i < id; i++){
-    //   this.setState({
-    //     // active${id}: active
-    //   })
-
-    // }
   }
 
   renderStars = () => {
     const stars = ["1","2","3","4","5"];
-    let i = 0
       return stars.map( (star, index) => 
       <span className={this.state.activeStars >= index + 1 ? "active" : '' } onClick={this.click}>*</span>)
   }
@@ -46,11 +38,13 @@ class App extends React.Component {
             <span onClick={(event) => this.click(event)}>*</span>
             <span onClick={(event) => this.click(event)}>*</span>
             <span onClick={(event) => this.click(event)}>*</span>
+            I will hide
           </div>
           :
           this.renderStars()
           }
           {/* {this.renderStars()} */}
+          I will not hide
         </div>
       // :
       // null
